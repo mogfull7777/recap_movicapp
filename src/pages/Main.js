@@ -4,9 +4,9 @@ import {Button, Card, Col, Container, Row} from "react-bootstrap";
 
 const Main = () => {
 
-    const [movies, setMovies] = useState([]);
+    const [tvs, setTvs] = useState([]);
 
-    const getMovies = async () => {
+    const getTvs = async () => {
 
         const address = "https://api.themoviedb.org/3/tv/airing_today?api_key=8597e491ed6e80f0de12e349eb60ea6e&language=en-US&page=1";
 
@@ -15,7 +15,7 @@ const Main = () => {
             const res = await axios.get(address)
 
             console.log("aaaaaaa", res.data.results)
-            setMovies(res.data.results)
+            setTvs(res.data.results)
 
         } catch (err) {
             console.log(err)
@@ -24,13 +24,13 @@ const Main = () => {
     }
 
     useEffect(() => {
-        getMovies()
+        getTvs()
     }, [])
 
     return (
         <Container>
             <Row>
-                {movies && movies.map(m => (
+                {tvs && tvs.map(m => (
                     <Col className={"mt-5"}>
                         <Card style={{ width: '18rem' }}>
                             <Card.Img
