@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import {Container, Row, Table} from "react-bootstrap";
+import {Link} from "react-router-dom";
 
 const Movie = () => {
 
@@ -35,6 +36,7 @@ const Movie = () => {
                         <th>평점</th>
                         <th>성인여부</th>
                         <th>인기지수</th>
+                        <th>자세히 보기</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -46,6 +48,11 @@ const Movie = () => {
                             <td>{movie.vote_average}</td>
                             <td>{movie.adult ? "성인" : "모든연령 가능"}</td>
                             <td>{movie.popularity}</td>
+                            <td>
+                                <Link to={`/movie/${movie.id}`}>
+                                    이동
+                                </Link>
+                            </td>
                         </tr>
                     ))}
                     </tbody>

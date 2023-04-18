@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import {Button, Card, Col, Container, Row} from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const Main = () => {
 
@@ -13,8 +14,6 @@ const Main = () => {
         try {
 
             const res = await axios.get(address)
-
-            console.log("aaaaaaa", res.data.results)
             setTvs(res.data.results)
 
         } catch (err) {
@@ -50,7 +49,9 @@ const Main = () => {
                                 <Card.Text>
                                     출시일 : {m.first_air_date ? m.first_air_date : "0000-00-00"}
                                 </Card.Text>
-                                <Button variant="primary">Go somewhere</Button>
+                                <Link to = {`/${m.id}`}>
+                                    <Button variant="primary">Go Detail</Button>
+                                </Link>
                             </Card.Body>
                         </Card>
                     </Col>
